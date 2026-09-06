@@ -1,0 +1,61 @@
+{
+  "$comment": "Шаблон связки для скилла multipost. Скопируйте, замените плейсхолдеры. Значений секретов здесь быть не должно — только ИМЕНА переменных окружения.",
+  "name": "blog-to-social",
+  "title": "Блог → Telegram + MAX + Facebook + Instagram + Threads",
+  "enabled": true,
+  "source": {
+    "type": "blog",
+    "base": "https://example.com/blog/",
+    "link_required": true
+  },
+  "caption_file": "telegram.md",
+  "destinations": [
+    {
+      "network": "telegram",
+      "chat_id": "-100XXXXXXXXXX",
+      "title": "Название канала",
+      "method": "sendMediaGroup",
+      "token_env": "MPR_TELEGRAM_BOT_TOKEN",
+      "caption_limit_with_photos": 1024,
+      "parse_mode": "HTML",
+      "footer": "необязательный хвост только для этой сети"
+    },
+    {
+      "network": "max",
+      "chat_id": "-XXXXXXXXXXXXXX",
+      "title": "Название канала в MAX",
+      "method": "uploadImage+sendMessageToChat",
+      "token_env": "MPR_MAX_BOT_TOKEN",
+      "format": "markdown",
+      "note": "botapi.max.ru, токен в заголовке Authorization; из РФ может понадобиться российский корневой сертификат"
+    },
+    {
+      "network": "facebook-page",
+      "page_id": "XXXXXXXXXXXX",
+      "token_env": "MPR_FACEBOOK_PAGE_TOKEN",
+      "image": "images/01-gorizont-16x9.png"
+    },
+    {
+      "network": "instagram",
+      "ig_user_id": "XXXXXXXXXXXX",
+      "token_env": "MPR_INSTAGRAM",
+      "image": "images/02-vertikal-4x5.jpg",
+      "note": "публикация только по публичному URL картинки; ссылка в подписи некликабельна"
+    },
+    {
+      "network": "threads",
+      "token_env": "MPR_THREADS",
+      "char_limit": 500
+    }
+  ],
+  "stories": [
+    { "network": "facebook-story", "image": "images/04-story-fb-9x16.jpg", "token_env": "MPR_FACEBOOK_PAGE_TOKEN" },
+    { "network": "instagram-story", "image": "images/03-story-ig-9x16.jpg", "manual": true, "note": "IG-истории часто проще выложить руками" }
+  ],
+  "rules": {
+    "approve_before_publish": true,
+    "dry_run_first": true,
+    "verify_carousel_order_by_hash": true,
+    "test_channel_first": "-100XXXXXXXXXX"
+  }
+}
