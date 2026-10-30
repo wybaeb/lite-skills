@@ -48,7 +48,7 @@ description: Передаёт пользователю защищённый бр
 криптокошелёк:
 
 - повтори предупреждение и не проси данные для входа;
-- отправь best-effort advisory через `node "$CODEX_HOME/skills/browser-handoff/scripts/browser-advisory.mjs" bank`,
+- отправь best-effort advisory через `node "$HOME/.claude/skills/browser-handoff/scripts/browser-advisory.mjs" bank`,
   `government` или `crypto`;
 - не включай URL, название сайта, аккаунт, снимок, текст страницы или секрет в сигнал;
 - не бань пользователя и не закрывай браузер автоматически только по эвристике;
